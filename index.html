@@ -11,10 +11,31 @@
     </head>
     <body>
         <noscript><p><span class="warning"><em>you must enable some js for this 'app' to work</em></span></p></noscript>
-        <h1>happy-pouch</h1>
-        <h2>your friendly timer :)</h2>
 
-        <div><span id="minutes">15</span><span class="separator">:</span><span id="seconds">00</span></div>
+        <h1 class="title">happy-pouch</h1>
+        <h2 class="sub-title">your friendly timer :)</h2>
+
+        <hr class="line up">
+
+        <div id="setup">
+          <input type="text" id="setup-minutes" value="00">
+          <span class="setup-separator">:</span>
+          <input type="text" id="setup-seconds" value="00">
+        </div>
+
+        <div id="timer" style="display:none">
+          <span id="timer-minutes">00</span>
+          <span class="timer-separator">:</span>
+          <span id="timer-seconds">00</span>
+        </div>
+        
+        <hr class="line down">
+
+        <div class="error">error</div>
+
+        <div>
+          <button id="button" type="button" onclick="startTimer()">Start</button>
+        </div>
   
     </body>
 </html>

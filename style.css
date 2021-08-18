@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
+
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Mono', monospace; */
+
+body {
+  text-align: center;
+}
+
+
+.error {
+  display: none;
+}
+
+#setup-minutes {
+  width: 30px;
+}
+
+#setup-seconds {
+  width: 30px;
+}
+
+.line {
+  width: 300px;
+}
