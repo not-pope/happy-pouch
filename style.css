@@ -4,23 +4,49 @@
 /* font-family: 'Roboto', sans-serif;
 font-family: 'Roboto Mono', monospace; */
 
+*,
+::after,
+::before {
+	box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
 body {
   text-align: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+p,
+span,
+svg {
+	padding: 0;
+	margin: 0
 }
 
 
-.error {
+#error {
   display: none;
 }
 
 #setup-minutes {
-  width: 30px;
+  width: 50px;
 }
 
 #setup-seconds {
-  width: 30px;
+  width: 50px;
 }
 
 .line {
   width: 300px;
+  margin: 0 auto;
+}
+
+#setup{
+
+}
+
+#timer{
+  display: none;
 }

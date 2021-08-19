@@ -15,26 +15,26 @@
         <h1 class="title">happy-pouch</h1>
         <h2 class="sub-title">your friendly timer :)</h2>
 
-        <hr class="line up">
+        <hr id="up" class="line up">
 
         <div id="setup">
-          <input type="text" id="setup-minutes" value="00">
+          <input type="text" id="setup-minutes" value="15" onchange="fixFormating()">
           <span class="setup-separator">:</span>
-          <input type="text" id="setup-seconds" value="00">
+          <input type="text" id="setup-seconds" value="00" onchange="fixFormating()">
         </div>
 
-        <div id="timer" style="display:none">
-          <span id="timer-minutes">00</span>
+        <div id="timer">
+          <span id="timer-minutes" >00</span>
           <span class="timer-separator">:</span>
           <span id="timer-seconds">00</span>
         </div>
         
-        <hr class="line down">
+        <hr id="down" class="line">
 
-        <div class="error">error</div>
+        <div id="error">error</div>
 
         <div>
-          <button id="button" type="button" onclick="startTimer()">Start</button>
+          <button id="button" type="button" onclick="toggleTimer()">Start</button>
         </div>
   
     </body>
