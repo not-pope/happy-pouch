@@ -1,44 +1,8 @@
-// function startTimer(){
-//   let setup=document.getElementById("setup");
-//   let timer=document.getElementById("timer");
-//   // let minutes=document.getElementById("timer-minutes")
-//   let button=document.getElementById("button");
-//   if (button.innerHTML=="Start"){
-//     setup.style.display="none";
-//     timer.style.display="inline";
-//     button.innerHTML="Pause";
-//   }else {
-//     setup.style.display="inline";
-//     timer.style.display="none";
-//     button.innerHTML="Start";
-//   }
-// }
-
-// function updateMinutes(){
-//   let setupMinutes=document.getElementById("setup-minutes");
-//   let timerMinutes=document.getElementById("timer-minutes");
-//   minutes=parseInt(setupMinutes.value);
-//   timerMinutes.innerHTML=setupMinutes.value;
-//   // console.log(timerMinutes.innerHTML);
-// }
-// function updateSeconds(){
-//   let setupSeconds=document.getElementById("setup-seconds");
-//   let timerSeconds=document.getElementById("timer-seconds");
-//   timerSeconds.innerHTML=setupSeconds.value;
-//   // console.log(timerSeconds.innerHTML);
-// }
-// function errorInformating(minutes,seconds){
-//   // returns 0 is there is no error and 1 if there is error
-
-//   if (isNaN(minutes) || (minutes<0) || (minutes>60)){
-//     return 1;
-//   }
-//   return 0;
-// }
+let yikes=undefined;
 
 function toggleTimer(){
-  let button=document.getElementById("button");
-  let state=button.innerHTML;
+  let buttonObject=document.getElementById("button");
+  let state=buttonObject.innerHTML;
   if (state==="Start"){
     startTimer();
   }else{
@@ -46,42 +10,109 @@ function toggleTimer(){
   }
 }
 
-function startTimer(){
-  // check format for seconds
-  let setupSeconds=document.getElementById("setup-seconds");
-  if (errorInSeconds(parseInt(setupSeconds.value))){
-    showError("error formating secconds");
+function timer(){
+  let timerSecondsObject=document.getElementById("timer-seconds");
+  let timerMinutesObject=document.getElementById("timer-minutes");
+  let seconds=parseInt(timerSecondsObject.innerHTML);
+  let minutes=parseInt(timerMinutesObject.innerHTML);
+  if(seconds==0){
+    if(minutes==0){
+      let alarm = new Audio("/assets/alarm.wav");
+      alarm.play();
+      endTimer();
+    }else{
+      minutes=minutes-1;
+      seconds=59;
+    }
   }else{
-    hideError();
+    seconds=seconds-1;
   }
-  // check format for minutes
-  let setupMinutes=document.getElementById("setup-minutes");
-  if (errorInMinutes(parseInt(setupMinutes.value),parseInt(setupSeconds.value))){
-    showError("error formating minutes");
+  if (seconds<10){
+    timerSecondsObject.innerHTML="0"+seconds;
+  }else{
+    timerSecondsObject.innerHTML=seconds;
+  }
+  if (minutes<10){
+    timerMinutesObject.innerHTML="0"+minutes;
+  }else{
+    timerMinutesObject.innerHTML=minutes;
+  }
+}
+
+function startTimer(){
+  // check formatting
+  let setupSecondsObject=document.getElementById("setup-seconds");
+  let setupSeconds=setupSecondsObject.value;
+  let setupMinutesObject=document.getElementById("setup-minutes");
+  let setupMinutes=setupMinutesObject.value;
+  if (errorInFormatting(parseInt(setupMinutes),parseInt(setupSeconds))){
+    showError();
+    return;
   }else{
     hideError();
   }
   // sync timer with setup
+  let timerSecondsObject=document.getElementById("timer-seconds");
+  let timerMinutesObject=document.getElementById("timer-minutes");
+  if (setupSecondsObject.value.length==1){
+    timerSecondsObject.innerHTML="0"+setupSeconds;
+  }else{
+    timerSecondsObject.innerHTML=setupSeconds;
+  }
+  if (setupMinutesObject.value.length==1){
+    timerMinutesObject.innerHTML="0"+setupMinutes;
+  }else{
+    timerMinutesObject.innerHTML=setupMinutes;
+  }
   // hide setup
+  let setupObject=document.getElementById("setup");
+  setupObject.style.display="none";
   // show timer
+  let timerObject=document.getElementById("timer");
+  timerObject.style.display="inline";
+  // change button text
+  let buttonObject=document.getElementById("button");
+  buttonObject.innerHTML="Pause";
   // start timer
+  // console.log("started");
+  yikes=setInterval(timer,1000);
 }
 
-function errorInSeconds(seconds){
+function endTimer(){
+  // start timer
+  // console.log("stopped");
+  clearInterval(yikes);
+  alert("timer is over");
+  // change button text
+  let buttonObject=document.getElementById("button");
+  buttonObject.innerHTML="Start";
+  // sync setup with timer
+  let timerSecondsObject=document.getElementById("timer-seconds");
+  let timerMinutesObject=document.getElementById("timer-minutes");
+  let setupSecondsObject=document.getElementById("setup-seconds");
+  let setupMinutesObject=document.getElementById("setup-minutes");
+  setupSecondsObject.value=timerSecondsObject.innerHTML;
+  setupMinutesObject.value=timerMinutesObject.innerHTML;
+  // hide timer
+  let timerObject=document.getElementById("timer");
+  timerObject.style.display="none";
+  // show setup
+  let setupObject=document.getElementById("setup");
+  setupObject.style.display="inline";
+}
+
+
+function errorInFormatting(minutes,seconds){
   if (isNaN(seconds)){
     return 1;
   }
-  if (seconds<5){
+  if (isNaN(minutes)){
+    return 1;
+  }
+  if (seconds<0){
     return 1;
   }
   if (seconds>59){
-    return 1;
-  }
-  return 0;
-}
-
-function errorInMinutes(minutes,seconds){
-  if (isNaN(minutes)){
     return 1;
   }
   if (minutes<0){
@@ -96,19 +127,10 @@ function errorInMinutes(minutes,seconds){
   return 0;
 }
 
-function showError(msg){
+function showError(){
   document.getElementById("error").style.display="inline";
-  document.getElementById("error").innerHTML=msg;
 }
 
 function hideError(){
   document.getElementById("error").style.display="none";
-}
-
-function fixFormating(){
-  let minutesObject=document.getElementById("setup-minutes");
-  let minutes=minutesObject.value;
-  let secondsObject=document.getElementById("setup-seconds");
-  let seconds=secondsObject.value;
-  if (errorInSeconds)
 }

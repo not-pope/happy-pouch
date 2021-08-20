@@ -44,7 +44,7 @@ svg {
 }
 
 #setup{
-
+  display: inline;
 }
 
 #timer{

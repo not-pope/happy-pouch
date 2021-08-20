@@ -18,9 +18,9 @@
         <hr id="up" class="line up">
 
         <div id="setup">
-          <input type="text" id="setup-minutes" value="15" onchange="fixFormating()">
+          <input type="text" id="setup-minutes" autocomplete="off" value="15">
           <span class="setup-separator">:</span>
-          <input type="text" id="setup-seconds" value="00" onchange="fixFormating()">
+          <input type="text" id="setup-seconds" autocomplete="off" value="00">
         </div>
 
         <div id="timer">
@@ -31,7 +31,7 @@
         
         <hr id="down" class="line">
 
-        <div id="error">error</div>
+        <div id="error">there is error in formatting</div>
 
         <div>
           <button id="button" type="button" onclick="toggleTimer()">Start</button>
