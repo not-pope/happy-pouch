@@ -82,7 +82,6 @@ function endTimer(){
   // start timer
   // console.log("stopped");
   clearInterval(yikes);
-  alert("timer is over");
   // change button text
   let buttonObject=document.getElementById("button");
   buttonObject.innerHTML="Start";
