@@ -106,7 +106,9 @@ function hideError(){
 }
 
 function fixFormating(){
-  let minutes=document.getElementById("setup-minutes");
-  let seconds=document.getElementById("setup-seconds");
-  if ()
+  let minutesObject=document.getElementById("setup-minutes");
+  let minutes=minutesObject.value;
+  let secondsObject=document.getElementById("setup-seconds");
+  let seconds=secondsObject.value;
+  if (errorInSeconds)
 }
