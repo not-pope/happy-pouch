@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
 
-/* font-family: 'Roboto', sans-serif;
-font-family: 'Roboto Mono', monospace; */
-
 *,
 ::after,
 ::before {
@@ -15,7 +12,7 @@ font-family: 'Roboto Mono', monospace; */
 body {
   text-align: center;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 p,
@@ -25,9 +22,32 @@ svg {
 	margin: 0
 }
 
+.title{
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.sub-title{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 3rem;
+}
 
 #error {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
   display: none;
+}
+
+#setup-minutes, #setup-seconds, #timer-minutes, #timer-seconds, .setup-separator, .timer-separator{
+  font-family: "Roboto Mono", monospace;
+  font-size: 5rem;
+}
+
+#setup{
+  display: inline;
 }
 
 #setup-minutes {
@@ -39,14 +59,34 @@ svg {
 }
 
 .line {
-  width: 300px;
+  width: 60%;
   margin: 0 auto;
+  border: 1px solid #000000;
 }
 
-#setup{
-  display: inline;
+#up{
+  margin-bottom: 0.8rem;
+}
+
+#down{
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 #timer{
   display: none;
+}
+
+#button{
+  font-family: "Roboto Mono", monospace;
+  font-size: 3rem;
+  background-color: white;
+  padding: 0rem 0.5rem 0.7rem 0.5rem;
+  margin-top: 1.6rem;
+}
+
+#setup-minutes, #setup-seconds{
+  border: 1px solid black;
+  text-align: center;
+  width: 1.4em;
 }

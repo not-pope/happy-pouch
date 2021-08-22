@@ -3,7 +3,7 @@ let yikes=undefined;
 function toggleTimer(){
   let buttonObject=document.getElementById("button");
   let state=buttonObject.innerHTML;
-  if (state==="Start"){
+  if (state==="start"){
     startTimer();
   }else{
     endTimer();
@@ -72,7 +72,7 @@ function startTimer(){
   timerObject.style.display="inline";
   // change button text
   let buttonObject=document.getElementById("button");
-  buttonObject.innerHTML="Pause";
+  buttonObject.innerHTML="pause";
   // start timer
   // console.log("started");
   yikes=setInterval(timer,1000);
@@ -84,7 +84,7 @@ function endTimer(){
   clearInterval(yikes);
   // change button text
   let buttonObject=document.getElementById("button");
-  buttonObject.innerHTML="Start";
+  buttonObject.innerHTML="start";
   // sync setup with timer
   let timerSecondsObject=document.getElementById("timer-seconds");
   let timerMinutesObject=document.getElementById("timer-minutes");
